@@ -5,7 +5,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/Exercicios/Algoritmos_Ordenaçao/Selection" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Exercicios/sort" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Exercicios/Banco_De_Pessoas" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Exercicios/Algoritmos_Ordenaçao/Bubblesort/Exercicios Bubble" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
