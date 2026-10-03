@@ -1,6 +1,6 @@
 public class Heap extends Ordenador {
     @Override
-    public void ordenar(int[] arr) {
+    public <T extends Comparable<T>> void ordenar(T[] arr) {
         int n = arr.length;
 
         for (int i = n / 2 - 1; i >= 0; i--) {
@@ -8,7 +8,7 @@ public class Heap extends Ordenador {
         }
 
         for (int i = n - 1; i > 0; i--) {
-            int temp = arr[0];
+            T temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
 
@@ -16,21 +16,21 @@ public class Heap extends Ordenador {
         }
     }
 
-    private void heapify(int[] arr, int n, int i) {
+    private <T extends Comparable<T>> void heapify(T[] arr, int n, int i) {
         int maior = i;
         int esquerda = 2 * i + 1;
         int direita = 2 * i + 2;
 
-        if (esquerda < n && arr[esquerda] > arr[maior]) {
+        if (esquerda < n && arr[esquerda].compareTo(arr[maior]) > 0) {
             maior = esquerda;
         }
 
-        if (direita < n && arr[direita] > arr[maior]) {
+        if (direita < n && arr[direita].compareTo(arr[maior]) > 0) {
             maior = direita;
         }
 
         if (maior != i) {
-            int temp = arr[i];
+            T temp = arr[i];
             arr[i] = arr[maior];
             arr[maior] = temp;
 

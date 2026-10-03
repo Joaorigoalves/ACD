@@ -1,10 +1,10 @@
 public class Quick extends Ordenador {
     @Override
-    public void ordenar(int[] arr) {
+    public <T extends Comparable<T>> void ordenar(T[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 
-    private void quickSort(int[] arr, int inicio, int fim) {
+    private <T extends Comparable<T>> void quickSort(T[] arr, int inicio, int fim) {
         if (inicio < fim) {
             int pivo = particionar(arr, inicio, fim);
 
@@ -13,20 +13,21 @@ public class Quick extends Ordenador {
         }
     }
 
-    private int particionar(int[] arr, int inicio, int fim) {
-        int pivo = arr[fim];
+    private <T extends Comparable<T>> int particionar(T[] arr, int inicio, int fim) {
+        T pivo = arr[fim];
         int i = inicio - 1;
 
         for (int j = inicio; j < fim; j++) {
-            if (arr[j] <= pivo) {
+            if (arr[j].compareTo(pivo) <= 0) {
                 i++;
-                int temp = arr[i];
+
+                T temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
             }
         }
 
-        int temp = arr[i + 1];
+        T temp = arr[i + 1];
         arr[i + 1] = arr[fim];
         arr[fim] = temp;
 

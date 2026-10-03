@@ -1,19 +1,15 @@
 public class Shell extends Ordenador {
     @Override
-    public void ordenar(int[] arr) {
+    public <T extends Comparable<T>> void ordenar(T[] arr) {
         int n = arr.length;
 
-        // Começa com um gap grande e vai reduzindo
         for (int gap = n / 2; gap > 0; gap /= 2) {
 
-            // Faz um insertion sort "gapped" para este gap
             for (int i = gap; i < n; i++) {
-                int temp = arr[i];
+                T temp = arr[i];
                 int j;
 
-                // Desloca elementos que são maiores que temp
-                // para uma posição à frente de sua posição atual
-                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                for (j = i; j >= gap && arr[j - gap].compareTo(temp) > 0; j -= gap) {
                     arr[j] = arr[j - gap];
                 }
 

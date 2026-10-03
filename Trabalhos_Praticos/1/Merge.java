@@ -1,10 +1,10 @@
 public class Merge extends Ordenador {
     @Override
-    public void ordenar(int[] arr) {
+    public <T extends Comparable<T>> void ordenar(T[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 
-    private void mergeSort(int[] arr, int esquerda, int direita) {
+    private <T extends Comparable<T>> void mergeSort(T[] arr, int esquerda, int direita) {
         if (esquerda < direita) {
             int meio = (esquerda + direita) / 2;
 
@@ -14,24 +14,27 @@ public class Merge extends Ordenador {
         }
     }
 
-    private void merge(int[] arr, int esquerda, int meio, int direita) {
+    private <T extends Comparable<T>> void merge(T[] arr, int esquerda, int meio, int direita) {
         int n1 = meio - esquerda + 1;
         int n2 = direita - meio;
 
-        int[] esq = new int[n1];
-        int[] dir = new int[n2];
+        T[] esq = (T[]) new Comparable[n1];
+        T[] dir = (T[]) new Comparable[n2];
 
         for (int i = 0; i < n1; i++) {
             esq[i] = arr[esquerda + i];
         }
+
         for (int j = 0; j < n2; j++) {
             dir[j] = arr[meio + 1 + j];
         }
 
-        int i = 0, j = 0, k = esquerda;
+        int i = 0;
+        int j = 0;
+        int k = esquerda;
 
         while (i < n1 && j < n2) {
-            if (esq[i] <= dir[j]) {
+            if (esq[i].compareTo(dir[j]) <= 0) {
                 arr[k] = esq[i];
                 i++;
             } else {

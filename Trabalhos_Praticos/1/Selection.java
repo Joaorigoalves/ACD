@@ -1,15 +1,17 @@
 public class Selection extends Ordenador {
     @Override
-    public void ordenar(int[] vetor) {
+    public <T extends Comparable<T>> void ordenar(T[] vetor) {
 
         for (int i = 0; i < vetor.length - 1; i++) {
             int menor = i;
-            for (int j = i + 1; j < n; j++) {
-                if (vetor[j] < vetor[menor]) {
+
+            for (int j = i + 1; j < vetor.length; j++) {
+                if (vetor[j].compareTo(vetor[menor]) < 0) {
                     menor = j;
                 }
             }
-            int temp = vetor[menor];
+
+            T temp = vetor[menor];
             vetor[menor] = vetor[i];
             vetor[i] = temp;
         }

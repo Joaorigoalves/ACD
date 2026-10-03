@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Bucket extends Ordenador {
+public class Bucket  {
     @Override
     public void ordenar(int[] arr) {
         if (arr.length == 0) {
